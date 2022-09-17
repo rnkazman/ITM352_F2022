@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Events</title>
 </head>
 <body>
     <script>
         var mouseClicks = 0, mouseMoves = 1, mouseRatio = 0;
     </script>
-    <button onclick="mouseClicks++; mouseRatio = mouseClicks / mouseMoves; 
-                    demo.innerHTML = mouseClicks; ratio.innerHTML = mouseRatio.toFixed(4);"
-            onmousemove="mouseMoves++; mouseRatio = mouseClicks / mouseMoves; 
-                    moves.innerHTML=mouseMoves; ratio.innerHTML = mouseRatio;"
-    >Hit Me</button>
+    <button onclick="mouseClicks++; demo.innerHTML=mouseClicks;
+            mouseRatio=(mouseMoves/mouseClicks).toFixed(2);
+            ratio.innerHTML=mouseRatio;"
+            onmousemove="mouseMoves++; moves.innerHTML=mouseMoves; 
+            mouseRatio=(mouseMoves/mouseClicks).toFixed(2);
+            ratio.innerHTML=mouseRatio;">
+        Click me
+    </button>
 
-    <p id="demo">0</p>
+<p id="demo">[Clicks go here]</p>
 
-    <p id="moves">0</p>
+<p id="moves">[Moves go here]</p>
 
-    <p id="ratio">0</p>
+<p id="ratio">[Average goes here]</p>
 
-    <p>When the button is clicked, we output some text in the paragraph with id "demo"</p>
+<p>Count button clicks and moves and their ratio.</p>
 </body>
 </html>
