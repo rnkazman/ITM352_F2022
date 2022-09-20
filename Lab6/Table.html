@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var line = 1;
+
+        var template = `
+    <table border="1" style="margin-left: auto; margin-right: auto; text-align: center;">
+        <tr><th colspan="2"><h1>Your One Stop For Used Phones - D.P.'s</h1></th></tr>
+        <tr><td>
+           ${line}.
+        </td><td><br />Copyright @ Dan Port</td></tr>
+        <tr><td>${line+1}.</td><td>2021</td></tr>
+        <tr><td>${line+2}.</td><td>11:15 AM</td></tr>
+    </table>`;
+    document.write(template);
+    </script>
+    </body>
+</html>
