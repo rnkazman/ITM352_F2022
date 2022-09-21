@@ -22,6 +22,7 @@
             var spins = 20;
             var first_name = "Rick";
             var last_name = "Kazman";
+            var over_half = false;
             var store_name = "<p style=font-size:300%>" + "<B>" + first_name + "</b> <i>" + last_name +
                 "'s</p><p style=font-size:200%> Used Smart Phone Store!</p>";
             document.write(store_name);
@@ -30,6 +31,7 @@
             Hits:<span id="hits_span"> 0</span>
             Spins:<span id="spins_span"> 0</span>
             Hit/Spin:<span id="hit_spin_span"> 0</span>
+            You win:<span id="win_span">pending...</span>
         </p>
 
         <input id='speedSlider' type='range' min=".1" max="5" step=".1" style="direction: rtl;"
@@ -39,6 +41,30 @@
 
     <div>
         <main>
+            <section class="item"
+            onclick="
+            if(this.className != 'item') {
+                this.className='item';
+                hits_span.innerHTML = ++hits; 
+                hit_spin_span.innerHTML = hits/spins;
+            } else {
+                this.className='item rotate';
+            }
+                if (over_half || (hits < spins)) {
+                    over_half = true;
+                }
+                // over_half = over_half || 
+                win_span.innerHTML =  over_half;
+                " 
+            onmouseover="
+            if(this.className == 'item') {
+                this.className='item rotate';
+                spins++; spins_span.innerHTML = spins; 
+                over_half = over_half || ((spins < 2*hits) && (hits < spins))
+                win_span.innerHTML =  over_half;
+            }
+                "
+            >
             <section class="item" onmouseover="
             className='item rotate' 
             //spins++;
