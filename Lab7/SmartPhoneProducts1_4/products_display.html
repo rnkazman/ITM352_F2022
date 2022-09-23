@@ -41,32 +41,38 @@
 <div>
     <main>
         <section class="item" onmouseover="
-            if (this.className == 'item')
-            {
-                this.className='item rotate' ;
-                spins++;
-                spins_span.innerHTML = spins; 
-                ratio = hits/spins;
-                hit_spin_span.innerHTML = ratio.toFixed(2);
-
-            }
+            this.className='item rotate' ;
+            spins++;
+            spins_span.innerHTML = spins; 
+            ratio = hits/spins;
+            hit_spin_span.innerHTML = ratio.toFixed(2);
         " onclick="
-            if (this.className != 'item') // Already rotating, so stop it and increment hits
-            {
-                this.className='item' ;
-                hits++;
-                hits_span.innerHTML = hits; 
-                ratio = hits/spins;
-                hit_spin_span.innerHTML = ratio.toFixed(2);
-            } else                      // Not rotating, so start it rotating and increment spins
-            {
-                this.className='item rotate' ;
-                spins++;
-                spins_span.innerHTML = spins; 
-                ratio = hits/spins;
-                hit_spin_span.innerHTML = ratio.toFixed(2);
+            this.className='item' ;
+            hits++;
+            hits_span.innerHTML = hits; 
+            ratio = hits/spins;
+            hit_spin_span.innerHTML = ratio.toFixed(2);
+            // -- Winning progress depends on hits/spins
+            /*
+            if ( ratio > 0 ) {
+                win_span.innerHTML = 'On your way!';
+                if ( ratio >= 0.25 ) {
+                    win_span.innerHTML = 'Almost there!';
+                    if ( ratio >= 0.5 ) {
+                        win_span.innerHTML = 'You win!';
+                    }
+                }
             }
-        ">
+            */
+            if (ratio > 0.5) {
+                win_span.innerHTML = 'You win!'
+            } else if (ratio > 0.25) {
+                win_span.innerHTML = 'Almost there!';
+            } else 
+            {
+                win_span.innerHTML = 'On your way!';
+            }
+                    ">
             <h2>HTC</h2>
             <p>&dollar; 40.00</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg" alt="photo"></img>
