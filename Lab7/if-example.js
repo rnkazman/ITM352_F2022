@@ -1,4 +1,4 @@
-age = 61;
+age = 30;
 
 // Correct structure
 if (age > 60) {
