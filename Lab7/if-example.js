@@ -1,4 +1,8 @@
-age = 30;
+// Example of different ways to structure if statements (and their consequences)
+
+// Try uncommenting the other assignment to age to see how the outputs differ.
+var age = 30;
+// age = 61;
 
 // Correct structure
 if (age > 60) {
