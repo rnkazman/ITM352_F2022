@@ -13,11 +13,12 @@
 <header>
     <h1 id="myHead">
         <script>
-            var hits = 10;
-            var spins = 20;
+            var hits = 1;
+            var spins = 1;
             var first_name = "Rick";
             var last_name = "Kazman";
             var ratio;
+            var over_half = false;
             var store_name = "<p style=font-size:150%>" + "<B>" + first_name + "</b> <i>" + last_name +
                 "'s</p><p style=font-size:120%> Used Smart Phone Store!!</p>";
             document.write(store_name);
@@ -27,6 +28,7 @@
             Spins:<span id="spins_span"> 0</span>
             Hit/Spin:<span id="hit_spin_span"> 0</span>
             You win:<span id="win_span">pending...</span>
+
         </p>
 
         <input id='speedSlider' type='range' min=".1" max="5" step=".1" style="direction: rtl;"
@@ -38,24 +40,38 @@
     onchange="localStyle.innerHTML = '.rotate img {animation-duration: ' + speedSlider.value + 's;}';">
 <div>
     <main>
-        <section class="item" onmouseover="className='item rotate' 
+        <section class="item" onmouseover="
+            this.className='item rotate' ;
             spins++;
             spins_span.innerHTML = spins; 
             ratio = hits/spins;
             hit_spin_span.innerHTML = ratio.toFixed(2);
-            if (spins < hits * 2) {
-                // code to execute when true
-                win_span.innerHTML = 'You Win!';
-            } else {
-                // code to execute when false
-                win_span.innerHTML = 'You Lose.';
-            }
-        " onclick="className='item' 
+        " onclick="
+            this.className='item' ;
             hits++;
             hits_span.innerHTML = hits; 
             ratio = hits/spins;
             hit_spin_span.innerHTML = ratio.toFixed(2);
-        ">
+            // -- Winning progress depends on hits/spins
+            /*
+            if ( ratio > 0 ) {
+                win_span.innerHTML = 'On your way!';
+                if ( ratio >= 0.25 ) {
+                    win_span.innerHTML = 'Almost there!';
+                    if ( ratio >= 0.5 ) {
+                        win_span.innerHTML = 'You win!';
+                    }
+                }
+            }
+            */
+            if (ratio > 0.5) {
+                win_span.innerHTML = 'You win!'
+            } else if (ratio > 0.25) {
+                win_span.innerHTML = 'Almost there!';
+            } else {
+                win_span.innerHTML = 'On your way!';
+            }
+                    ">
             <h2>HTC</h2>
             <p>&dollar; 40.00</p>
             <img src="http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg" alt="photo"></img>
