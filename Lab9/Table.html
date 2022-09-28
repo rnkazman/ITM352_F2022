@@ -14,10 +14,10 @@
 </head>
 
 <body>
-    <table style="border: 1px solid black;text-align: center;"  onclick="
-        new_row = this.appendChild(document.createElement('tr'));
+    <table style="border: 1px solid black;text-align: center;"  id="thingy" onclick="
+        new_row = this.insertRow();
         for (i=0; i < this.rows[0].cells.length; i++) {
-            new_cell = this.appendChild(document.createElement('td'));
+            var new_cell = new_row.insertCell(i);
             new_cell.innerHTML = 'xxx';
         }
         ">
@@ -50,7 +50,7 @@
         </script>
     </table>
     <input type="button" value="Delete Last Row" onclick="
-        tbody = document.getElementsByTagName('table')[0];
+        tbody = document.getElementById('thingy');
         tbody.deleteRow(tbody.rows.length-1);
     ">
 </body>
