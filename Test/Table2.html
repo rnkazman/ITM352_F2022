@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        tr:hover {
+            background-color: yellow;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table style="border: 1px solid black;text-align: center;"  id="thingy" onclick="
+        new_row = this.insertRow();
+        for (i=0; i < this.rows[0].cells.length; i++) {
+            var new_cell = new_row.insertCell(i);
+        tbody = document.getElementById('thingy');
+        tbody.deleteRow(tbody.rows.length-1);
+    ">
+</body>
+
+</html>
