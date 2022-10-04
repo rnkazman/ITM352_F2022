@@ -5,3 +5,5 @@ function isNonNegInt (q) {
     if(parseInt(q) != q) errors.push('Not an integer!'); // Check that it is an integer
     
 }
+
+}
