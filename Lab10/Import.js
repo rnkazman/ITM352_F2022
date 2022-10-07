@@ -1,4 +1,4 @@
-require("./Ex4.js");
+var isNonNegativeInteger = require("./Export.js");
 
 var attributes = "Daniel;21;21.5;-20.5";
 var pieces = attributes.split(";");
