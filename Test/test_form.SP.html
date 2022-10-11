@@ -12,6 +12,18 @@
     <script>
         let params = (new URL(document.location)).searchParams;
 
+        if( params.has('quantity_textbox') ) { 
+            // is the quanity valid? If so, print purchase. If not, give error
+            if(isNonNegativeInteger(params.get('quantity_textbox'))) {
+                 document.body.innerHTML = `Thank for you for ordering ${params.get('quantity_textbox')} items`;
+            } else {
+                document.body.innerHTML = `Invalid quantity bozo - try again`;
+
+                //window.location.href = "order_page.html" + document.location.search;
+            }
+        } 
+    
+        /*
         if (params.has("quantity_textbox")) {
             let value = params.get("quantity_textbox");
             console.log("Got a QT: " + value);
@@ -22,8 +34,7 @@
                 document.write(`Enter a valid quantity!`);
                 window.stop();
             }
-
-        }
+        } */
 
         function isNonNegativeInteger(queryString, returnErrors = false) {
             errors = []; // assume no errors at first
@@ -66,6 +77,10 @@
         <BR>
         <input type="submit" value="Purchase"></input>
     </form>
+    <script>
+        quantity_form["quantity_textbox"].value = params.get('quantity_textbox');
+        checkQuantityTextbox(quantity_form["quantity_textbox"]);
+    </script>
 </body>
 
 </html>
