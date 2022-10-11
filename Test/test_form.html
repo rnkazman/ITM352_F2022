@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function isNonNegativeInteger(queryString, returnErrors = false) {
+            errors = []; // assume no errors at first
+            if (Number(queryString) != queryString) errors.push('Not a number!'); // Check if string is a number value
+            if (queryString < 0) errors.push('Negative value!'); // Check if it is non-negative
+            if (parseInt(queryString) != queryString) errors.push('Not an integer!'); // Check that it is an integer
+
+            if (returnErrors) {
+                return errors;
+            } else if (errors.length == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function checkQuantityTextbox() {
+            let value = document.getElementById("quantity_textbox").value;
+            qty_textbox_message.innerHTML = value;
+            let err_array = isNonNegativeInteger(value, true);
+            if (err_array.length != 0) {
+                document.getElementById("qty_textbox_message").innerHTML = err_array.join("; ");
+            }
+        }
+
+        function display_purchase() {
+            let num_things = document.getElementById('quantity_textbox').value;
+            if (isNonNegativeInteger(num_things)) {
+                document.body.innerHTML = `Thank you for ordering ${num_things} things`;
+            } 
+        }
+
+    </script>
+    <form name="quantity_form" action="test_form2.html" method="GET">
+        <label>Quantity desired:</label>
+        <input type="text" id="quantity_textbox" name="quantity_textbox" onkeyup="checkQuantityTextbox();">
+        </input>
+        <BR>
+        <span id='qty_textbox_message'>Enter a quantity</span>
+        <BR>
+        <input type="submit">Purchase</input>
+    </form>
+</body>
+
+</html>

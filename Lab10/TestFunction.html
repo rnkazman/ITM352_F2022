@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Test a function</title>
+</head>
+<body>
+    <script>
+        
+        function  generate_item_rows(quantity_array, count) {
+            for (i=0; i<count; i++) {
+                if (quantity_array[i] == 0) { 
+                    continue;
+                } else {
+                    document.write("<tr>");
+                    document.write(`<td>${i}</td><td>${quantity_array[i]}</td>`);
+                    document.write("</tr>");
+                }
+                
+            }
+        }
+
+        quantities = [3, 5, 0, -35.2, 11];
+        // Make a table
+        document.write("<table border=1>");
+        var stop = 2;
+        
+        generate_item_rows(quantities, stop);
+
+        document.write("</table>");
+    </script>    
+</body>
+</html>
