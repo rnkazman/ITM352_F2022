@@ -69,7 +69,7 @@
 
     </script>
     <form name="quantity_form" action="" method="GET">
-        <label>Quantity desired:</label>
+        <label for="quantity_textbox">Quantity desired:</label>
         <input type="text" id="quantity_textbox" name="quantity_textbox" onkeyup="checkQuantityTextbox();">
         </input>
         <BR>
@@ -79,7 +79,9 @@
     </form>
     <script>
         quantity_form["quantity_textbox"].value = params.get('quantity_textbox');
-        checkQuantityTextbox(quantity_form["quantity_textbox"]);
+        if (quantity_form["quantity_textbox"].value.length != 0) {
+            checkQuantityTextbox(quantity_form["quantity_textbox"]);
+        }
     </script>
 </body>
 
