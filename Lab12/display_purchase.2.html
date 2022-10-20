@@ -29,6 +29,7 @@
 
 
         let params = (new URL(document.location)).searchParams;
+        //params.getAll();
         params.forEach(function (value, key) { 
             if (isNonNegativeInteger(value)) {
                 document.write(`<BR>Thank you for ordering ${value} things`);
