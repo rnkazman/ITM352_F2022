@@ -29,15 +29,23 @@
 
 
         let params = (new URL(document.location)).searchParams;
-        //params.getAll();
-        params.forEach(function (value, key) { 
+        for (i = 0; i < 5; i++) {
+            name = "text" + (i + 1);
+            value = params.getAll(name);
             if (isNonNegativeInteger(value)) {
                 document.write(`<BR>Thank you for ordering ${value} things`);
             } else {
                 document.write('<BR>Enter a valid quantity bozo!');
             }
-         });
-        
+        }
+        /*params.forEach(function (value, key) {
+            if (isNonNegativeInteger(value)) {
+                document.write(`<BR>Thank you for ordering ${value} things`);
+            } else {
+                document.write('<BR>Enter a valid quantity bozo!');
+            }
+         });*/
+
     </script>
 </body>
 
