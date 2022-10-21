@@ -30,16 +30,22 @@
 
         let params = (new URL(document.location)).searchParams;
         console.log("Params=" + params);
-        if (params.has("quantity_textbox")) {
-            let the_text = params.get("quantity_textbox");
 
-            // Validate the input and if good, thank the user, otherwise print error message
-            if (isNonNegativeInteger(the_text)) {
-                document.write(`Thank you for ordering ${the_text} things`);
-            } else {
-                document.write('Enter a valid quantity bozo!');
+        for (i = 0; i < params.length; i++) {
+            index = i+1;
+            console.log("Index=" + index + params["text"+index]);
+            if (params.has("text"+index)) {
+                let the_text = params.get("text"+index);
+
+                // Validate the input and if good, thank the user, otherwise print error message
+                if (isNonNegativeInteger(the_text)) {
+                    document.write(`Thank you for ordering ${the_text} things`);
+                } else {
+                    document.write('Enter a valid quantity bozo!');
+                }
             }
         }
+
     </script>
 </body>
 
