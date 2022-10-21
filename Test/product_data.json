@@ -1,0 +1,27 @@
+[
+    {
+    "brand" : "HTC",
+    "price" : 165.00,
+    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg"
+    },
+    {
+    "brand" : "Apple",
+    "price" : 285.00,
+    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg"
+    },
+    {
+    "brand" : "Nokia",
+    "price" : 135.00,
+    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg"
+    },
+    {
+    "brand" : "Samsung",
+    "price" : 95.00,
+    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg"
+    },
+    {
+    "brand" : "Blackberry",
+    "price" : 13.00,
+    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg"
+    }
+]

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form_style.css">
     <title>Document</title>
 </head>
 
@@ -68,7 +69,8 @@
         }
 
     </script>
-    <form name="quantity_form" action="/process_form" method="GET">
+    <form name="quantity_form" action="/process_form" method="POST">
+        <h1>Buy Stuff!</h1>
         <label for="quantity_textbox">Quantity desired:</label>
         <input type="text" id="quantity_textbox" name="quantity_textbox" onkeyup="checkQuantityTextbox();">
         </input>
