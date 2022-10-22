@@ -63,12 +63,16 @@
 
     </script>
 
-    <form name="quantity_form" action="hello.html" method="GET">
+    <form name="quantity_form" action="/process_form" method="POST">
         <label>Buy Something!</label>
+        <BR>
         <input type="text" onkeyup="checkQuantityTextbox();" id="textbox1" name="text1">
         </input>
+        <BR>
+        <input type="text" onkeyup="checkQuantityTextbox();" id="textbox2" name="text2">
+        </input>
         <BR><span id='qty_textbox_message'>Enter a quantity</span>
-        <BR><input type="submit" value="Purchase!"></input>
+        <BR><input type="submit" value="Purchase!" name="Submit"></input>
     </form>
 
     <script>
