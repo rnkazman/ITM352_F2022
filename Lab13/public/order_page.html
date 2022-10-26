@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./product_data.js"></script>
     <title>Order Here</title>
 </head>
 
@@ -27,15 +28,14 @@
             }
         }
 
-        function checkQuantityTextbox() {
-            let input_string = document.getElementById("quantity_textbox").value;
+        function checkQuantityTextbox(the_object) {
+            let input_string = the_object.value;
             let error_array = isNonNegativeInteger(input_string, true);
             if (error_array.length == 0) {
                 qty_textbox_message.innerHTML = input_string;
             } else {
                 qty_textbox_message.innerHTML = error_array.join("; ");
             }
-
         }
 
         function displayPurchase() {
@@ -49,7 +49,14 @@
         }
 
         let params = (new URL(document.location)).searchParams;
+        
         console.log("Params=" + params);
+        // Check for an error and if so, pop up an alert to the user
+        if (params.has("error")) {
+            let err_msg = params.get("error");
+            alert(err_msg);
+        }
+        /*
         if (params.has("quantity_textbox")) {
             let the_text = params.get("quantity_textbox");
 
@@ -60,17 +67,24 @@
                 document.write('Enter a valid quantity bozo!');
             }
         }
-    }
+*/
 
     </script>
 
     <form name="quantity_form" action="/process_form" method="POST">
+        <script>for (i=0; i<products.length; i++) {
+            document.write(`<h3>${products[i]["name"]} at \$${products[i]["price"]}</h3>`);
+            document.write(`<h4>${products[i]["total_sold"]} ${products[i]["name"]} have been sold!</h4>`);
+
+        }
+        </script>
+
         <label>Buy Something!</label>
         <BR>
-        <input type="text" onkeyup="checkQuantityTextbox();" id="textbox1" name="text1">
+        <input type="text" onkeyup="checkQuantityTextbox(this);" id="textbox1" name="text1">
         </input>
         <BR>
-        <input type="text" onkeyup="checkQuantityTextbox();" id="textbox2" name="text2">
+        <input type="text" onkeyup="checkQuantityTextbox(this);" id="textbox2" name="text2">
         </input>
         <BR><span id='qty_textbox_message'>Enter a quantity</span>
         <BR><input type="submit" value="Purchase!" name="Submit"></input>
