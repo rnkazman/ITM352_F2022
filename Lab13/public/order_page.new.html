@@ -68,8 +68,8 @@
                 document.write(`<td>${products[i]["total_sold"]}</td>`);
                 text_id = "textbox" + i;
                 text_name = "text" + i;
-                document.write(`<td><input type="text" onkeyup="checkQuantityTextbox(this);" id=${text_id} name=${text_name}>
-        </input></td></tr>`);
+                document.write(`<td><input type="text" onkeyup="checkQuantityTextbox(this);" id=${text_id} name=${text_name}
+        value="0"></input></td></tr>`);
             }
             document.write("</table>");
         </script>
