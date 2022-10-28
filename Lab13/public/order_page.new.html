@@ -56,36 +56,24 @@
             let err_msg = params.get("error");
             alert(err_msg);
         }
-        /*
-        if (params.has("quantity_textbox")) {
-            let the_text = params.get("quantity_textbox");
-
-            // Validate the input and if good, thank the user, otherwise print error message
-            if (isNonNegativeInteger(the_text)) {
-                document.write(`Thank you for ordering ${the_text} things`);
-            } else {
-                document.write('Enter a valid quantity bozo!');
-            }
-        }
-*/
-
     </script>
 
     <form name="quantity_form" action="/process_form" method="POST">
-        <script>
-        for (i=0; i<products.length; i++) {
-            document.write(`<h3>${products[i]["name"]} at \$${products[i]["price"]}</h3>`);
-            document.write(`<h4>${products[i]["total_sold"]} ${products[i]["name"]} have been sold!</h4>`);
-        }
-        </script>
-
         <label>Buy Something!</label>
         <BR>
-        <input type="text" onkeyup="checkQuantityTextbox(this);" id="textbox1" name="text1">
-        </input>
-        <BR>
-        <input type="text" onkeyup="checkQuantityTextbox(this);" id="textbox2" name="text2">
-        </input>
+        <script>
+            document.write("<table border=1><tr><th>Name</th><th>Price</th><th>Sold</th><th>Quantity</th></tr>");
+            for (i=0; i<products.length; i++) {
+                document.write(`<tr><td>${products[i]["name"]}</td><td>\$${products[i]["price"]}</td>`);
+                document.write(`<td>${products[i]["total_sold"]}</td>`);
+                text_id = "textbox" + i;
+                text_name = "text" + i;
+                document.write(`<td><input type="text" onkeyup="checkQuantityTextbox(this);" id=${text_id} name=${text_name}>
+        </input></td></tr>`);
+            }
+            document.write("</table>");
+        </script>
+
         <BR><span id='qty_textbox_message'>Enter a quantity</span>
         <BR><input type="submit" value="Purchase!" name="Submit"></input>
     </form>

@@ -42,9 +42,10 @@ app.get("/product_data.js", function (request, response, next) {
 
 app.post("/process_form", function (request, response) {
     // Process the form by redirecting to the receipt page
-    var q = request.body['text1'];
+    var q = request.body['text0'];
     if (typeof q != 'undefined') {
         if (isNonNegativeInteger(q)) {  // We have a valid quantity
+            products[0].total_sold += Number(q);
             response.redirect('receipt.html?quantity=' + q);
         } else {
             response.redirect('order_page.html?error=Invalid%20Quantity&quantity_textbox=' + q);
