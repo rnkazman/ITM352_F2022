@@ -5,7 +5,7 @@ var path = require('path');
 
 app.use(express.static(__dirname + '/public'));
 app.use('/css',express.static(__dirname + '/public'));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); 
 
 function isNonNegativeInteger(queryString, returnErrors = false) {
     errors = []; // assume no errors at first
