@@ -1,5 +1,11 @@
 var express = require('express');
 var app = express();
+var path = require('path');
+
+
+app.use(express.static(__dirname + '/public'));
+app.use('/css',express.static(__dirname + '/public'));
+app.use(express.urlencoded({ extended: true }));
 
 function isNonNegativeInteger(queryString, returnErrors = false) {
     errors = []; // assume no errors at first
@@ -18,19 +24,6 @@ function isNonNegativeInteger(queryString, returnErrors = false) {
     }
 }
 
-app.use(express.static(__dirname + '/public'));
-app.use(express.urlencoded({ extended: true }));
-
-app.get('/test', function (request, response, next) {
-    console.log("Got a test path");
-    next();
-});
-
-app.all('*', function (request, response, next) {
-    console.log(request.method + ' to path ' + request.path);
-    next();
-});
-
 var products = require(__dirname + '/product_data.json');
 products.forEach((prod, i) => { prod.total_sold = 0 });
 
@@ -38,6 +31,11 @@ app.get("/product_data.js", function (request, response, next) {
     response.type('.js');
     var products_str = `var products = ${JSON.stringify(products)};`;
     response.send(products_str);
+});
+
+app.all('*', function (request, response, next) {
+    console.log(request.method + ' to path ' + request.path);
+    next();
 });
 
 app.post("/process_form", function (request, response) {

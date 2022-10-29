@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./product_data.js"></script>
+    <style>
+        th {color:red;
+        text-align: center;}
+        td {color:blue;
+            text-align: center;}
+      </style>
     <title>Receipt Page</title>
 </head>
 
@@ -29,7 +35,7 @@
         }
 
         let params = (new URL(document.location)).searchParams;
-        document.write("<H1>Receipt</H1><table border=1>");
+        document.write("<H1>Receipt</H1><table border=1><th>Item</th><th>Price</th><th>Quantity</th><th>Item Total</th>");
 
         for (i = 0; i < products.length; i++) {
             let name = "text" + i;
