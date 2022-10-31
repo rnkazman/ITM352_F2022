@@ -39,30 +39,35 @@ app.all('*', function (request, response, next) {
 });
 
 app.post("/process_form", function (request, response) {
-    // Process the form by redirecting to the receipt page
+    // Process the form by redirecting to the receipt page if everything is valid.
     let valid = true;
     let ordered = "";
 
-    for (i = 0; i < products.length; i++) {
+    for (i = 0; i < products.length; i++) { // Iterate over all text boxes in the form.
         var name = "text" + i;
         var q = request.body[name];
         if (typeof q != 'undefined') {
-            if (isNonNegativeInteger(q)) {  // We have a valid quantity
+            if (isNonNegativeInteger(q)) {  
+                // We have a valid quantity. Add to the ordered string.
                 products[i].total_sold += Number(q);
                 ordered += name + "=" + q + "&"; 
             } else {
+                // We have an invalid quantity. Set the valid flag to false.
                 valid = false;
             }
         } else {
+            // The textbox was not found.  Signal a problem.
             valid = false;
         }
     }
+
     if (!valid) {
+        // If we found an error, redirect back to the order page.
         response.redirect('order_page.new.html?error=Invalid%20Quantity');
     } else {
+        // If everything is good, redirect to the receipt page.
         response.redirect('receipt.new.html?' + ordered);
     }
-
 });
 
 app.listen(8080, () => console.log(`listening on port 8080`));
