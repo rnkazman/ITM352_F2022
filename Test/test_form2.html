@@ -8,6 +8,7 @@
 </head>
 <body>
     <script>
+
         function isNonNegativeInteger(queryString, returnErrors = false) {
             errors = []; // assume no errors at first
             if (Number(queryString) != queryString) errors.push('Not a number!'); // Check if string is a number value
@@ -24,6 +25,8 @@
         }
 
         let params = (new URL(document.location)).searchParams;
+        console.log("Params=" + params);
+
         if (params.has("quantity_textbox")) {
             let value = params.get("quantity_textbox") ;
             if (isNonNegativeInteger(value)) {
@@ -32,6 +35,7 @@
                 document.write(`Enter a valid quantity!`);
             }
         }
+        document.write(`<a href="test_form3.html?${params.toString()}"> Hit me!</a>`);
     </script>
 </body>
 </html>
